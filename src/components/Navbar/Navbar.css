@@ -1,0 +1,31 @@
+a {
+  color: #F62F5E;
+  text-decoration: none;
+}
+
+a:visited,
+a:active {
+  color: #F62F5E;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.navigation__ul {
+  display: flex;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.list-reset-styles {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
