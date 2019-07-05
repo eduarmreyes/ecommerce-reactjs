@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import ROOT_API from "../../constants/constants";
 import "./ProductList.css";
+import ProductListItem from "../ProductListItem/ProductListItem";
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -29,7 +30,11 @@ class ProductList extends React.Component {
   render() {
     const product_list = this.state.data.rows
       ? this.state.data.rows.map(product => {
-          return <li key={product.product_id}>{product.name}</li>;
+          return (
+            <ProductListItem key={product.product_id} product_data={product}>
+              {product.name}
+            </ProductListItem>
+          );
         })
       : "";
     return (
