@@ -1,5 +1,6 @@
 import React from "react";
-import data from "./data.json";
+import axios from "axios";
+import ROOT_API from "../../constants/constants";
 import "./ProductList.css";
 
 class ProductList extends React.Component {
@@ -8,7 +9,22 @@ class ProductList extends React.Component {
     this.state = { data: [] };
   }
   componentDidMount() {
-    this.setState({ data: data });
+    axios
+      .get(ROOT_API + "products", {
+        params: {
+          page: 1,
+          limit: 20,
+          description_length: 200
+        }
+      })
+      .then(response => {
+        this.setState({
+          data: response.data
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
   render() {
     const product_list = this.state.data.rows
@@ -17,9 +33,9 @@ class ProductList extends React.Component {
         })
       : "";
     return (
-      <div>
+      <section className="product_list">
         <ul>{product_list}</ul>
-      </div>
+      </section>
     );
   }
 }
